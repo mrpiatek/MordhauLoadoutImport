@@ -13,28 +13,89 @@ namespace MordhauLoadoutImport
     public partial class ImportDialog : Form
     {
         string decodedLoadout = "";
+
+        string DecodedLoadout
+        {
+            get { return decodedLoadout; }
+            set {
+                decodedLoadout = value;
+
+                if (decodedLoadout != "")
+                {
+                    var loadoutName = LoadoutParser.GetLoadoutNameFromProfileString(decodedLoadout);
+                    loadoutNameTextBox.Text = LoadoutParser.GetNextAvailableName(loadoutName);
+                }
+                else
+                {
+                    loadoutNameTextBox.Text = "";
+                }
+            }
+        }
+
+        private bool IsProfileValid
+        {
+            set
+            {
+                if (value)
+                {
+                    validLoadoutLabel.Visible = true;
+                    invalidLoadoutLabel.Visible = false;
+                    loadoutImportPanel.Visible = true;
+                }
+                else
+                {
+                    invalidLoadoutLabel.Visible = true;
+                    validLoadoutLabel.Visible = false;
+                    loadoutImportPanel.Visible = false;
+                }
+            }
+        }
+
         public ImportDialog()
         {
             InitializeComponent();
+
+            //TODO refactor
+            if (Clipboard.ContainsText())
+            {
+                var clipboardText = Clipboard.GetText();
+                var isValidProfile = clipboardText.StartsWith("CharacterProfiles=");
+                try
+                {
+                    ProfileEncoder.Decode(clipboardText);
+                    isValidProfile = true;
+                }
+                catch
+                {
+                }
+                if (isValidProfile)
+                {
+                    encodedProfileTextBox.Text = clipboardText;
+                }
+            }
         }
 
         private void encodedProfileTextBox_TextChanged(object sender, EventArgs e)
         {
+            //TODO refactor
+            string userInput = encodedProfileTextBox.Text.Trim();
+
             string decodedProfile;
 
-            if (TryDecodeProfile(encodedProfileTextBox.Text.Trim(), out decodedProfile))
+            if (userInput.StartsWith("CharacterProfiles="))
             {
-                validLoadoutLabel.Visible = true;
-                invalidLoadoutLabel.Visible = false;
-                loadoutImportPanel.Visible = true;
-                decodedLoadout = decodedProfile;
+                DecodedLoadout = userInput;
+                IsProfileValid = true;
+            }
+            else if (TryDecodeProfile(userInput, out decodedProfile))
+            {
+                DecodedLoadout = decodedProfile;
+                IsProfileValid = true;
             }
             else
             {
-                invalidLoadoutLabel.Visible = true;
-                validLoadoutLabel.Visible = false;
-                loadoutImportPanel.Visible = false;
-                decodedLoadout = "";
+                DecodedLoadout = "";
+                IsProfileValid = false;
             }
         }
 
@@ -43,11 +104,6 @@ namespace MordhauLoadoutImport
             try
             {
                 decodedProfile = ProfileEncoder.Decode(encodedProfile);
-
-                var loadoutName = LoadoutParser.GetLoadoutNameFromProfileString(decodedProfile);
-
-                loadoutNameTextBox.Text = LoadoutParser.GetNextAvailableName(loadoutName);
-
                 return true;
             }
             catch
@@ -59,7 +115,7 @@ namespace MordhauLoadoutImport
 
         private void importButton_Click(object sender, EventArgs e)
         {
-            if(decodedLoadout == "")
+            if (decodedLoadout == "")
             {
                 return;
             }
