@@ -19,7 +19,7 @@ namespace MordhauLoadoutImport
 
             var stringToEncode = hash + profile;
 
-            var plainTextBytes = Encoding.Unicode.GetBytes(stringToEncode);
+            var plainTextBytes = Encoding.UTF8.GetBytes(stringToEncode);
             var encodedProfile = Convert.ToBase64String(plainTextBytes);
             return encodedProfile;
         }
@@ -27,7 +27,7 @@ namespace MordhauLoadoutImport
         public static string Decode(string encodedProfile)
         {
             var base64EncodedBytes = Convert.FromBase64String(encodedProfile);
-            var decodedProfile = Encoding.Unicode.GetString(base64EncodedBytes);
+            var decodedProfile = Encoding.UTF8.GetString(base64EncodedBytes);
 
             string hash = decodedProfile.Substring(0, 32);
 

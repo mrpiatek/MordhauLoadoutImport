@@ -12,17 +12,45 @@ namespace MordhauLoadoutImport
 {
     public partial class ExportDialog : Form
     {
+        private bool exportAsPlainText = false;
+        public bool ExportAsPlainText
+        {
+            get
+            {
+                return exportAsPlainText;
+            }
+            set
+            {
+                exportAsPlainText = value;
+                if (exportAsPlainText)
+                {
+                    profileTextBox.Text = PlainTextProfile;
+                }
+                else
+                {
+                    profileTextBox.Text = EncodedProfile;
+                }
+            }
+        }
+
         public string ProfileName
         {
             get { return profileNameLabel.Text; }
             set { profileNameLabel.Text = value; }
         }
 
+        public string PlainTextProfile
+        {
+            get;
+            set;
+        }
+
         public string EncodedProfile
         {
-            get { return encodedProfile.Text; }
-            set { encodedProfile.Text = value; }
+            get;
+            set;
         }
+
         public ExportDialog()
         {
             InitializeComponent();
@@ -30,7 +58,15 @@ namespace MordhauLoadoutImport
 
         private void copyToClipboard_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(EncodedProfile);
+            if (exportAsPlainText)
+            {
+                Clipboard.SetText(PlainTextProfile);
+            }
+            else
+            {
+                Clipboard.SetText(EncodedProfile);
+            }
+            
             FlashClipboardMessage();
         }
 
@@ -45,6 +81,11 @@ namespace MordhauLoadoutImport
         {
             clipboardFlashLabel.Visible = false;
             clipboardFlasTimer.Stop();
+        }
+
+        private void exportAsPlainTextCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ExportAsPlainText = exportAsPlainTextCheckBox.Checked;
         }
     }
 }

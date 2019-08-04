@@ -57,7 +57,9 @@ namespace MordhauLoadoutImport
             var encodedProfile = ProfileEncoder.Encode(loadout.Profile);
             ExportDialog exportDialog = new ExportDialog();
             exportDialog.ProfileName = loadout.Name;
+            exportDialog.PlainTextProfile = loadout.Profile;
             exportDialog.EncodedProfile = encodedProfile;
+            exportDialog.ExportAsPlainText = false;
             exportDialog.ShowDialog();
         }
 

@@ -29,21 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.encodedProfile = new System.Windows.Forms.TextBox();
+            this.profileTextBox = new System.Windows.Forms.TextBox();
             this.profileNameLabel = new System.Windows.Forms.Label();
             this.copyToClipboard = new System.Windows.Forms.Button();
             this.clipboardFlashLabel = new System.Windows.Forms.Label();
             this.clipboardFlasTimer = new System.Windows.Forms.Timer(this.components);
+            this.exportAsPlainTextCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // encodedProfile
+            // profileTextBox
             // 
-            this.encodedProfile.Location = new System.Drawing.Point(15, 32);
-            this.encodedProfile.Multiline = true;
-            this.encodedProfile.Name = "encodedProfile";
-            this.encodedProfile.ReadOnly = true;
-            this.encodedProfile.Size = new System.Drawing.Size(832, 283);
-            this.encodedProfile.TabIndex = 0;
+            this.profileTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.profileTextBox.Location = new System.Drawing.Point(15, 55);
+            this.profileTextBox.Multiline = true;
+            this.profileTextBox.Name = "profileTextBox";
+            this.profileTextBox.ReadOnly = true;
+            this.profileTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.profileTextBox.Size = new System.Drawing.Size(698, 285);
+            this.profileTextBox.TabIndex = 0;
             // 
             // profileNameLabel
             // 
@@ -57,7 +62,8 @@
             // 
             // copyToClipboard
             // 
-            this.copyToClipboard.Location = new System.Drawing.Point(724, 321);
+            this.copyToClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.copyToClipboard.Location = new System.Drawing.Point(594, 361);
             this.copyToClipboard.Name = "copyToClipboard";
             this.copyToClipboard.Size = new System.Drawing.Size(123, 23);
             this.copyToClipboard.TabIndex = 2;
@@ -67,10 +73,11 @@
             // 
             // clipboardFlashLabel
             // 
+            this.clipboardFlashLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.clipboardFlashLabel.AutoSize = true;
             this.clipboardFlashLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.clipboardFlashLabel.ForeColor = System.Drawing.Color.Green;
-            this.clipboardFlashLabel.Location = new System.Drawing.Point(597, 326);
+            this.clipboardFlashLabel.Location = new System.Drawing.Point(467, 366);
             this.clipboardFlashLabel.Name = "clipboardFlashLabel";
             this.clipboardFlashLabel.Size = new System.Drawing.Size(121, 13);
             this.clipboardFlashLabel.TabIndex = 3;
@@ -82,16 +89,27 @@
             this.clipboardFlasTimer.Interval = 2000;
             this.clipboardFlasTimer.Tick += new System.EventHandler(this.clipboardFlasTimer_Tick);
             // 
+            // exportAsPlainTextCheckBox
+            // 
+            this.exportAsPlainTextCheckBox.AutoSize = true;
+            this.exportAsPlainTextCheckBox.Location = new System.Drawing.Point(16, 32);
+            this.exportAsPlainTextCheckBox.Name = "exportAsPlainTextCheckBox";
+            this.exportAsPlainTextCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.exportAsPlainTextCheckBox.TabIndex = 4;
+            this.exportAsPlainTextCheckBox.Text = "Export as plain text";
+            this.exportAsPlainTextCheckBox.UseVisualStyleBackColor = true;
+            this.exportAsPlainTextCheckBox.CheckedChanged += new System.EventHandler(this.exportAsPlainTextCheckBox_CheckedChanged);
+            // 
             // ExportDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 359);
+            this.ClientSize = new System.Drawing.Size(729, 396);
+            this.Controls.Add(this.exportAsPlainTextCheckBox);
             this.Controls.Add(this.clipboardFlashLabel);
             this.Controls.Add(this.copyToClipboard);
             this.Controls.Add(this.profileNameLabel);
-            this.Controls.Add(this.encodedProfile);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.profileTextBox);
             this.MaximizeBox = false;
             this.Name = "ExportDialog";
             this.ShowIcon = false;
@@ -104,10 +122,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox encodedProfile;
+        private System.Windows.Forms.TextBox profileTextBox;
         private System.Windows.Forms.Label profileNameLabel;
         private System.Windows.Forms.Button copyToClipboard;
         private System.Windows.Forms.Label clipboardFlashLabel;
         private System.Windows.Forms.Timer clipboardFlasTimer;
+        private System.Windows.Forms.CheckBox exportAsPlainTextCheckBox;
     }
 }
