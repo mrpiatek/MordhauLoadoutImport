@@ -11,13 +11,21 @@ namespace MordhauLoadoutImport
     public static class LoadoutParser
     {
         public static List<Loadout> Loadouts { get; } = new List<Loadout>();
+        static string GameIniFilePath;
+        static string GameIniBackupFilePath;
 
-        static string GameIniFilePath
+        static LoadoutParser()
         {
-            get
+            var localAppDataPath = Environment.GetEnvironmentVariable("LocalAppData");
+            GameIniFilePath = localAppDataPath + @"\Mordhau\Saved\Config\WindowsClient\Game.ini";
+            GameIniBackupFilePath = localAppDataPath + @"\Mordhau\Saved\Config\WindowsClient\Game.backup.ini";
+        }
+
+        public static void BackupGameIniIfNeeded()
+        {
+            if (!File.Exists(GameIniBackupFilePath))
             {
-                var localAppDataPath = Environment.GetEnvironmentVariable("LocalAppData");
-                return localAppDataPath + @"\Mordhau\Saved\Config\WindowsClient\game.ini";
+                File.Copy(GameIniFilePath, GameIniBackupFilePath);
             }
         }
 

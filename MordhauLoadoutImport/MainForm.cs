@@ -16,6 +16,9 @@ namespace MordhauLoadoutImport
         public MainForm()
         {
             InitializeComponent();
+
+            BackupGameIniIfNeeded();
+
             LoadProfiles();
         }
 
