@@ -42,8 +42,7 @@ namespace MordhauLoadoutImport
         {
             try
             {
-                var base64EncodedBytes = Convert.FromBase64String(encodedProfile);
-                decodedProfile = Encoding.UTF8.GetString(base64EncodedBytes);
+                decodedProfile = ProfileEncoder.Decode(encodedProfile);
 
                 var loadoutName = LoadoutParser.GetLoadoutNameFromProfileString(decodedProfile);
 

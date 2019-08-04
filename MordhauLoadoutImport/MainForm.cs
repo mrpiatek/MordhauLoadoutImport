@@ -54,8 +54,7 @@ namespace MordhauLoadoutImport
 
         private void ExportLoadout(Loadout loadout)
         {
-            var plainTextBytes = Encoding.UTF8.GetBytes(loadout.Profile);
-            var encodedProfile = Convert.ToBase64String(plainTextBytes);
+            var encodedProfile = ProfileEncoder.Encode(loadout.Profile);
             ExportDialog exportDialog = new ExportDialog();
             exportDialog.ProfileName = loadout.Name;
             exportDialog.EncodedProfile = encodedProfile;

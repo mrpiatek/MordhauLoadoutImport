@@ -84,7 +84,7 @@
             this.Controls.Add(this.loadoutListBox);
             this.Controls.Add(this.button1);
             this.Name = "MainForm";
-            this.Text = "Mordhau Loadout Share";
+            this.Text = "Mordhau Loadout Import";
             this.ResumeLayout(false);
             this.PerformLayout();
 
