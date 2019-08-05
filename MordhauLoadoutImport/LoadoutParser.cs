@@ -71,7 +71,7 @@ namespace MordhauLoadoutImport
             Regex rx = new Regex("^CharacterProfiles=\\(Name=INVTEXT\\(\"(.*?)\"\\)", RegexOptions.Compiled);
             profile = rx.Replace(profile, $"CharacterProfiles=(Name=INVTEXT(\"{name}\")");
 
-            using (StreamWriter sw = new StreamWriter(GameIniFilePath, true, Encoding.Unicode))
+            using (StreamWriter sw = new StreamWriter(GameIniFilePath, true, Encoding.UTF8))
             {
                 sw.WriteLine();
                 sw.WriteLine(@"[/Game/Mordhau/Blueprints/BP_MordhauSingleton.BP_MordhauSingleton_C]");
@@ -116,6 +116,60 @@ namespace MordhauLoadoutImport
             return matches[0].Groups[1].Value.Trim();
         }
 
+        public static ParsedProfile ParseProfile(string profile)
+        {
+            // remove all whitespaces
+            profile = Regex.Replace(profile, @"\s+", "");
+            Regex rx = new Regex(@"Wearables=\((.*?)\),Equipment", RegexOptions.Compiled);
+            var match = rx.Match(profile);
+
+            if (!match.Success)
+            {
+                throw new Exception("Could not parse name from the loadout profile");
+            }
+
+            var wearablesString = match.Groups[1].Value;
+
+            // hack to fix below loop not including final wearable
+            wearablesString += ",";
+            //
+            var bracketLevel = 0;
+            var currentWearableIndex = 0;
+            var carretPosition = 0;
+            var lastSlicePosition = 0;
+            int[] wearableIds = new int[9];
+            foreach (char c in wearablesString)
+            {
+                if (c == '(') bracketLevel++;
+                else if (c == ')') bracketLevel--;
+                else if (c == ',' && bracketLevel == 0)
+                {
+                    rx = new Regex(@"ID=(\d+)", RegexOptions.Compiled);
+                    match = rx.Match(wearablesString, lastSlicePosition, carretPosition - lastSlicePosition);
+                    lastSlicePosition = carretPosition;
+
+                    if (match.Success)
+                    {
+                        wearableIds[currentWearableIndex] = int.Parse(match.Groups[1].Value);
+                    }
+                    else
+                    {
+                        wearableIds[currentWearableIndex] = -1;
+                    }
+
+                    if (++currentWearableIndex >= 9)
+                    {
+                        break;
+                    }
+                }
+
+                carretPosition++;
+            }
+
+
+            return new ParsedProfile(wearableIds, new int[3]);
+        }
+
         public struct Loadout
         {
             public string Name { get; set; }
@@ -126,6 +180,31 @@ namespace MordhauLoadoutImport
                 Name = GetLoadoutNameFromProfileString(profile);
                 Profile = profile;
             }
+        }
+
+        public struct ParsedProfile
+        {
+            public int[] Wearables { get; set; }
+            public int[] Weapons { get; set; }
+
+            public ParsedProfile(int[] wearables, int[] weapons)
+            {
+                Wearables = wearables;
+                Weapons = weapons;
+            }
+        }
+
+        public enum Wearable
+        {
+            Head,
+            Neck,
+            Torso,
+            Shoulders,
+            Arms,
+            Hands,
+            Weist,
+            Legs,
+            Feet
         }
     }
 }

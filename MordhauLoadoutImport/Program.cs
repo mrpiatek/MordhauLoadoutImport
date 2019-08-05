@@ -17,6 +17,9 @@ namespace MordhauLoadoutImport
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if DEBUG
+            Application.Run(new MainForm());
+#else
             try
             {
                 Application.Run(new MainForm());
@@ -25,6 +28,7 @@ namespace MordhauLoadoutImport
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+#endif
         }
     }
 }

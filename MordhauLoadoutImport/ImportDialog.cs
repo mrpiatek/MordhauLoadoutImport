@@ -17,7 +17,8 @@ namespace MordhauLoadoutImport
         string DecodedLoadout
         {
             get { return decodedLoadout; }
-            set {
+            set
+            {
                 decodedLoadout = value;
 
                 if (decodedLoadout != "")
@@ -32,8 +33,13 @@ namespace MordhauLoadoutImport
             }
         }
 
+        private bool isProfileValid;
         private bool IsProfileValid
         {
+            get
+            {
+                return isProfileValid;
+            }
             set
             {
                 if (value)
@@ -48,6 +54,8 @@ namespace MordhauLoadoutImport
                     validLoadoutLabel.Visible = false;
                     loadoutImportPanel.Visible = false;
                 }
+
+                isProfileValid = value;
             }
         }
 
@@ -96,6 +104,25 @@ namespace MordhauLoadoutImport
             {
                 DecodedLoadout = "";
                 IsProfileValid = false;
+            }
+
+
+            if (IsProfileValid)
+            {
+                LoadoutParser.ParsedProfile parsedProfile = LoadoutParser.ParseProfile(DecodedLoadout);
+                StringBuilder sb = new StringBuilder();
+                foreach (int wearableId in Enum.GetValues(typeof(LoadoutParser.Wearable)))
+                {
+                    string wearableName = Wearables.ResourceManager.GetString($"_{wearableId+1}_{parsedProfile.Wearables[wearableId]}");
+                    if(wearableName == null)
+                    {
+                        wearableName = "?";
+                    }
+
+                    sb.AppendLine($"{Enum.GetName(typeof(LoadoutParser.Wearable), wearableId)}: {wearableName}");
+                }
+
+                wearablesLabel.Text = sb.ToString();
             }
         }
 

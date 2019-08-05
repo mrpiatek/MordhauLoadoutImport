@@ -36,6 +36,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.loadoutImportPanel = new System.Windows.Forms.Panel();
             this.invalidLoadoutLabel = new System.Windows.Forms.Label();
+            this.wearablesLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.loadoutImportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +53,7 @@
             // 
             // importButton
             // 
-            this.importButton.Location = new System.Drawing.Point(413, 19);
+            this.importButton.Location = new System.Drawing.Point(410, 149);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(75, 23);
             this.importButton.TabIndex = 1;
@@ -60,7 +63,7 @@
             // 
             // loadoutNameTextBox
             // 
-            this.loadoutNameTextBox.Location = new System.Drawing.Point(3, 21);
+            this.loadoutNameTextBox.Location = new System.Drawing.Point(0, 151);
             this.loadoutNameTextBox.Name = "loadoutNameTextBox";
             this.loadoutNameTextBox.Size = new System.Drawing.Size(404, 20);
             this.loadoutNameTextBox.TabIndex = 2;
@@ -80,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 5);
+            this.label2.Location = new System.Drawing.Point(0, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 13);
             this.label2.TabIndex = 4;
@@ -97,12 +100,15 @@
             // 
             // loadoutImportPanel
             // 
+            this.loadoutImportPanel.Controls.Add(this.label1);
+            this.loadoutImportPanel.Controls.Add(this.label4);
+            this.loadoutImportPanel.Controls.Add(this.wearablesLabel);
             this.loadoutImportPanel.Controls.Add(this.loadoutNameTextBox);
             this.loadoutImportPanel.Controls.Add(this.importButton);
             this.loadoutImportPanel.Controls.Add(this.label2);
             this.loadoutImportPanel.Location = new System.Drawing.Point(12, 246);
             this.loadoutImportPanel.Name = "loadoutImportPanel";
-            this.loadoutImportPanel.Size = new System.Drawing.Size(491, 56);
+            this.loadoutImportPanel.Size = new System.Drawing.Size(491, 174);
             this.loadoutImportPanel.TabIndex = 6;
             this.loadoutImportPanel.Visible = false;
             // 
@@ -118,11 +124,38 @@
             this.invalidLoadoutLabel.Text = "Invalid loadout";
             this.invalidLoadoutLabel.Visible = false;
             // 
+            // wearablesLabel
+            // 
+            this.wearablesLabel.AutoSize = true;
+            this.wearablesLabel.Location = new System.Drawing.Point(3, 19);
+            this.wearablesLabel.Name = "wearablesLabel";
+            this.wearablesLabel.Size = new System.Drawing.Size(9, 117);
+            this.wearablesLabel.TabIndex = 5;
+            this.wearablesLabel.Text = "l\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(150, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 52);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Weapons\r\nl\r\nl\r\nl";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Wearables";
+            // 
             // ImportDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 314);
+            this.ClientSize = new System.Drawing.Size(515, 432);
             this.Controls.Add(this.invalidLoadoutLabel);
             this.Controls.Add(this.loadoutImportPanel);
             this.Controls.Add(this.label3);
@@ -150,5 +183,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel loadoutImportPanel;
         private System.Windows.Forms.Label invalidLoadoutLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label wearablesLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

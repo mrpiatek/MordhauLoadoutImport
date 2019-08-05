@@ -38,7 +38,7 @@ namespace MordhauLoadoutImport
         private bool IsValidLoadoutSelected()
         {
             var idx = loadoutListBox.SelectedIndex;
-            return idx > 0 && idx < Loadouts.Count;
+            return idx >= 0 && idx < Loadouts.Count;
         }
 
         private void exportButton_Click(object sender, EventArgs e)
