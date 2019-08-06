@@ -16,7 +16,9 @@ may not display proper armor names for imported loadouts so purchase them cautio
 3. Choose name for the new loadout,
 4. Click _Import_ button.
 
-> Once valid loadout is pasted you can see *Armor* section that will hint what armor pieces are required for this loadout. Currenly only Head, Torso and Legs wearables hints are supported.
+> Once valid loadout is pasted you can see *Armor* section that will hint what armor pieces are required for this loadout. The game will strip
+any cosmetics/weapons you do not own from the loadout when you try to edit it or use it ingame (it will be showing all cosmetics at mercenary preview in the menu though)
+Currenly only Head, Torso and Legs wearables hints are supported.
 You will need to work out rest of the cosmetics on your own for now.
 
 ### Exporting Loadouts
