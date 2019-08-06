@@ -117,7 +117,7 @@ namespace MordhauLoadoutImport
                     string wearableName = GetWearableName((Wearable)wearable, parsedProfile.Wearables[wearable]);
                     if (wearableName != null)
                     {
-                        sb.AppendLine($"{Enum.GetName(typeof(Wearable), wearable)}: {wearableName}");
+                        sb.AppendLine(wearableName);
                     }
                 }
 
@@ -132,6 +132,7 @@ namespace MordhauLoadoutImport
             {
                 case Wearable.Head: wearableName = Helmets.ResourceManager.GetObject($"_{wearableId}").ToString(); break;
                 case Wearable.Torso: wearableName = TorsoWearables.ResourceManager.GetObject($"_{wearableId}").ToString(); break;
+                case Wearable.Legs: wearableName = LegsWearables.ResourceManager.GetObject($"_{wearableId}").ToString(); break;
                 default: return null;
             }
 
@@ -175,6 +176,11 @@ namespace MordhauLoadoutImport
                 MessageBox.Show("Loadout imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
+        }
+
+        private void wearablesLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

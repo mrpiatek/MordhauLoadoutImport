@@ -35,11 +35,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.loadoutImportPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.wearablesLabel = new System.Windows.Forms.Label();
             this.invalidLoadoutLabel = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.loadoutImportPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // encodedProfileTextBox
@@ -47,13 +48,15 @@
             this.encodedProfileTextBox.Location = new System.Drawing.Point(12, 25);
             this.encodedProfileTextBox.Multiline = true;
             this.encodedProfileTextBox.Name = "encodedProfileTextBox";
+            this.encodedProfileTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.encodedProfileTextBox.Size = new System.Drawing.Size(491, 194);
             this.encodedProfileTextBox.TabIndex = 0;
             this.encodedProfileTextBox.TextChanged += new System.EventHandler(this.encodedProfileTextBox_TextChanged);
             // 
             // importButton
             // 
-            this.importButton.Location = new System.Drawing.Point(410, 149);
+            this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.importButton.Location = new System.Drawing.Point(413, 93);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(75, 23);
             this.importButton.TabIndex = 1;
@@ -63,9 +66,10 @@
             // 
             // loadoutNameTextBox
             // 
-            this.loadoutNameTextBox.Location = new System.Drawing.Point(0, 151);
+            this.loadoutNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loadoutNameTextBox.Location = new System.Drawing.Point(9, 95);
             this.loadoutNameTextBox.Name = "loadoutNameTextBox";
-            this.loadoutNameTextBox.Size = new System.Drawing.Size(404, 20);
+            this.loadoutNameTextBox.Size = new System.Drawing.Size(398, 20);
             this.loadoutNameTextBox.TabIndex = 2;
             // 
             // validLoadoutLabel
@@ -73,7 +77,7 @@
             this.validLoadoutLabel.AutoSize = true;
             this.validLoadoutLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.validLoadoutLabel.ForeColor = System.Drawing.Color.Green;
-            this.validLoadoutLabel.Location = new System.Drawing.Point(422, 222);
+            this.validLoadoutLabel.Location = new System.Drawing.Point(422, 9);
             this.validLoadoutLabel.Name = "validLoadoutLabel";
             this.validLoadoutLabel.Size = new System.Drawing.Size(81, 13);
             this.validLoadoutLabel.TabIndex = 3;
@@ -82,8 +86,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 135);
+            this.label2.Location = new System.Drawing.Point(6, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 13);
             this.label2.TabIndex = 4;
@@ -100,62 +105,68 @@
             // 
             // loadoutImportPanel
             // 
-            this.loadoutImportPanel.Controls.Add(this.label1);
-            this.loadoutImportPanel.Controls.Add(this.label4);
-            this.loadoutImportPanel.Controls.Add(this.wearablesLabel);
+            this.loadoutImportPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadoutImportPanel.Controls.Add(this.groupBox1);
             this.loadoutImportPanel.Controls.Add(this.loadoutNameTextBox);
             this.loadoutImportPanel.Controls.Add(this.importButton);
             this.loadoutImportPanel.Controls.Add(this.label2);
-            this.loadoutImportPanel.Location = new System.Drawing.Point(12, 246);
+            this.loadoutImportPanel.Location = new System.Drawing.Point(12, 225);
             this.loadoutImportPanel.Name = "loadoutImportPanel";
-            this.loadoutImportPanel.Size = new System.Drawing.Size(491, 174);
+            this.loadoutImportPanel.Size = new System.Drawing.Size(491, 119);
             this.loadoutImportPanel.TabIndex = 6;
             this.loadoutImportPanel.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Wearables";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(280, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 52);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Weapons\r\nl\r\nl\r\nl";
             // 
             // wearablesLabel
             // 
             this.wearablesLabel.AutoSize = true;
-            this.wearablesLabel.Location = new System.Drawing.Point(3, 19);
+            this.wearablesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.wearablesLabel.Location = new System.Drawing.Point(56, 16);
             this.wearablesLabel.Name = "wearablesLabel";
-            this.wearablesLabel.Size = new System.Drawing.Size(9, 117);
+            this.wearablesLabel.Size = new System.Drawing.Size(11, 48);
             this.wearablesLabel.TabIndex = 5;
-            this.wearablesLabel.Text = "l\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl";
+            this.wearablesLabel.Text = "l\r\nl\r\nl";
+            this.wearablesLabel.Click += new System.EventHandler(this.wearablesLabel_Click);
             // 
             // invalidLoadoutLabel
             // 
             this.invalidLoadoutLabel.AutoSize = true;
             this.invalidLoadoutLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.invalidLoadoutLabel.ForeColor = System.Drawing.Color.Red;
-            this.invalidLoadoutLabel.Location = new System.Drawing.Point(409, 222);
+            this.invalidLoadoutLabel.Location = new System.Drawing.Point(412, 9);
             this.invalidLoadoutLabel.Name = "invalidLoadoutLabel";
             this.invalidLoadoutLabel.Size = new System.Drawing.Size(91, 13);
             this.invalidLoadoutLabel.TabIndex = 7;
             this.invalidLoadoutLabel.Text = "Invalid loadout";
             this.invalidLoadoutLabel.Visible = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.wearablesLabel);
+            this.groupBox1.Location = new System.Drawing.Point(3, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(479, 74);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Armor (make sure these are available ingame)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 48);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Head\r\nTorso\r\nLegs";
+            // 
             // ImportDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 432);
+            this.ClientSize = new System.Drawing.Size(515, 344);
             this.Controls.Add(this.invalidLoadoutLabel);
             this.Controls.Add(this.loadoutImportPanel);
             this.Controls.Add(this.label3);
@@ -168,6 +179,8 @@
             this.Text = "Import Loadout";
             this.loadoutImportPanel.ResumeLayout(false);
             this.loadoutImportPanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,8 +196,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel loadoutImportPanel;
         private System.Windows.Forms.Label invalidLoadoutLabel;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label wearablesLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
     }
 }

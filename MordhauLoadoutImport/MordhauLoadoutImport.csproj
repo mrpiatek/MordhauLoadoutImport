@@ -70,6 +70,11 @@
     <Compile Include="ExportDialog.Designer.cs">
       <DependentUpon>ExportDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="LegsWearables.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LegsWearables.resx</DependentUpon>
+    </Compile>
     <Compile Include="LoadoutParser.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -98,6 +103,10 @@
     </Compile>
     <EmbeddedResource Include="ExportDialog.resx">
       <DependentUpon>ExportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegsWearables.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LegsWearables.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
