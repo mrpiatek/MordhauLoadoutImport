@@ -1,13 +1,23 @@
 ﻿# MordhauLoadoutImport
 > Easily share your Mordhau Loadouts.
 
+## Warning
+This is experimental software and is most likely to contain bugs. The program backs up your _Game.ini_ file at startup to _Game.backup.ini_ (only if no backup file is present). If 
+anything goes wrong you can restore the backup. The files are at _%LocalAppData%\Mordhau\Saved\Config\WindowsClient_. Also armor names were scraped manually therefore
+may not display proper armor names for imported loadouts so purchase them cautiously. If you encounter any issue or improper armor names please report it.
+
+**Author of this software does not take responsibility for damaged Game.ini file nor for wrong hints on loadout armor leading to bad purchases**
+
 ## Usage
 ### Importing Loadouts
 
 1. Click on _Import_ button; import dialog should appear,
-2. Paste loadout code into the text box,
+2. Paste loadout code into the text box (it will also accept plain text loadout),
 3. Choose name for the new loadout,
 4. Click _Import_ button.
+
+> Once valid loadout is pasted you can see *Armor* section that will hint what armor pieces are required for this loadout. Currenly only Head, Torso and Legs wearables hints are supported.
+You will need to work out rest of the cosmetics on your own for now.
 
 ### Exporting Loadouts
 
