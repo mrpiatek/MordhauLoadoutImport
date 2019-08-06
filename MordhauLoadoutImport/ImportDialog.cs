@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MordhauLoadoutImport.LoadoutParser;
 
 namespace MordhauLoadoutImport
 {
@@ -23,8 +24,8 @@ namespace MordhauLoadoutImport
 
                 if (decodedLoadout != "")
                 {
-                    var loadoutName = LoadoutParser.GetLoadoutNameFromProfileString(decodedLoadout);
-                    loadoutNameTextBox.Text = LoadoutParser.GetNextAvailableName(loadoutName);
+                    var loadoutName = GetLoadoutNameFromProfileString(decodedLoadout);
+                    loadoutNameTextBox.Text = GetNextAvailableName(loadoutName);
                 }
                 else
                 {
@@ -109,21 +110,37 @@ namespace MordhauLoadoutImport
 
             if (IsProfileValid)
             {
-                LoadoutParser.ParsedProfile parsedProfile = LoadoutParser.ParseProfile(DecodedLoadout);
+                ParsedProfile parsedProfile = ParseProfile(DecodedLoadout);
                 StringBuilder sb = new StringBuilder();
-                foreach (int wearableId in Enum.GetValues(typeof(LoadoutParser.Wearable)))
+                foreach (int wearable in Enum.GetValues(typeof(Wearable)))
                 {
-                    string wearableName = Wearables.ResourceManager.GetString($"_{wearableId+1}_{parsedProfile.Wearables[wearableId]}");
-                    if(wearableName == null)
+                    string wearableName = GetWearableName((Wearable)wearable, parsedProfile.Wearables[wearable]);
+                    if (wearableName != null)
                     {
-                        wearableName = "?";
+                        sb.AppendLine($"{Enum.GetName(typeof(Wearable), wearable)}: {wearableName}");
                     }
-
-                    sb.AppendLine($"{Enum.GetName(typeof(LoadoutParser.Wearable), wearableId)}: {wearableName}");
                 }
 
                 wearablesLabel.Text = sb.ToString();
             }
+        }
+
+        string GetWearableName(Wearable wearable, int wearableId)
+        {
+            string wearableName = null;
+            switch (wearable)
+            {
+                case Wearable.Head: wearableName = Helmets.ResourceManager.GetObject($"_{wearableId}").ToString(); break;
+                case Wearable.Torso: wearableName = TorsoWearables.ResourceManager.GetObject($"_{wearableId}").ToString(); break;
+                default: return null;
+            }
+
+            if (wearableName == null)
+            {
+                wearableName = "?";
+            }
+
+            return wearableName;
         }
 
         bool TryDecodeProfile(string encodedProfile, out string decodedProfile)
@@ -148,13 +165,13 @@ namespace MordhauLoadoutImport
             }
 
             var loadoutName = loadoutNameTextBox.Text.Trim();
-            if (LoadoutParser.LoadoutNameExist(loadoutName))
+            if (LoadoutNameExist(loadoutName))
             {
                 MessageBox.Show($"You already have loadout called {loadoutName}. Please choose a different name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                LoadoutParser.AppendLoadoutToFile(loadoutName, decodedLoadout);
+                AppendLoadoutToFile(loadoutName, decodedLoadout);
                 MessageBox.Show("Loadout imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

@@ -35,10 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.loadoutImportPanel = new System.Windows.Forms.Panel();
-            this.invalidLoadoutLabel = new System.Windows.Forms.Label();
-            this.wearablesLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.wearablesLabel = new System.Windows.Forms.Label();
+            this.invalidLoadoutLabel = new System.Windows.Forms.Label();
             this.loadoutImportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +112,33 @@
             this.loadoutImportPanel.TabIndex = 6;
             this.loadoutImportPanel.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Wearables";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(280, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 52);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Weapons\r\nl\r\nl\r\nl";
+            // 
+            // wearablesLabel
+            // 
+            this.wearablesLabel.AutoSize = true;
+            this.wearablesLabel.Location = new System.Drawing.Point(3, 19);
+            this.wearablesLabel.Name = "wearablesLabel";
+            this.wearablesLabel.Size = new System.Drawing.Size(9, 117);
+            this.wearablesLabel.TabIndex = 5;
+            this.wearablesLabel.Text = "l\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl";
+            // 
             // invalidLoadoutLabel
             // 
             this.invalidLoadoutLabel.AutoSize = true;
@@ -123,33 +150,6 @@
             this.invalidLoadoutLabel.TabIndex = 7;
             this.invalidLoadoutLabel.Text = "Invalid loadout";
             this.invalidLoadoutLabel.Visible = false;
-            // 
-            // wearablesLabel
-            // 
-            this.wearablesLabel.AutoSize = true;
-            this.wearablesLabel.Location = new System.Drawing.Point(3, 19);
-            this.wearablesLabel.Name = "wearablesLabel";
-            this.wearablesLabel.Size = new System.Drawing.Size(9, 117);
-            this.wearablesLabel.TabIndex = 5;
-            this.wearablesLabel.Text = "l\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl\r\nl";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(150, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 52);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Weapons\r\nl\r\nl\r\nl";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Wearables";
             // 
             // ImportDialog
             // 

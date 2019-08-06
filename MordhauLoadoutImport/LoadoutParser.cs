@@ -154,7 +154,7 @@ namespace MordhauLoadoutImport
                     }
                     else
                     {
-                        wearableIds[currentWearableIndex] = -1;
+                        wearableIds[currentWearableIndex] = 0;
                     }
 
                     if (++currentWearableIndex >= 9)

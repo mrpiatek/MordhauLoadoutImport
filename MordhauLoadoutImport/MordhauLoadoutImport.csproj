@@ -86,10 +86,15 @@
     <Compile Include="ProfileEncoder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wearables.Designer.cs">
+    <Compile Include="Helmets.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Wearables.resx</DependentUpon>
+      <DependentUpon>Helmets.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TorsoWearables.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TorsoWearables.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ExportDialog.resx">
       <DependentUpon>ExportDialog.cs</DependentUpon>
@@ -109,9 +114,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Wearables.resx">
+    <EmbeddedResource Include="Helmets.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Wearables.Designer.cs</LastGenOutput>
+      <LastGenOutput>Helmets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TorsoWearables.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TorsoWearables.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
