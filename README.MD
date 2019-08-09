@@ -15,6 +15,7 @@ may not display proper armor names for imported loadouts so purchase them cautio
 2. Paste loadout code into the text box (it will also accept plain text loadout),
 3. Choose name for the new loadout,
 4. Click _Import_ button.
+5. Once you run the game, steam may show cloud sync conflict. **Do not** download files from the cloud as this will revert all the changes.
 
 > Once valid loadout is pasted you can see *Armor* section that will hint what armor pieces are required for this loadout. The game will strip
 any cosmetics/weapons you do not own from the loadout when you try to edit it or use it ingame (it will be showing all cosmetics at mercenary preview in the menu though)
